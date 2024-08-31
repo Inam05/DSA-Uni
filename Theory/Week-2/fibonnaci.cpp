@@ -21,7 +21,7 @@ int main()
 {
     int num;
 
-    cout << "Enter a non-negative integer for Fibonacci: ";
+    cout << "Enter a non-negative integer for Fibonacci series: ";
     cin >> num;
 
     if (num < 0)
