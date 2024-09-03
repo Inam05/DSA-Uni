@@ -18,7 +18,9 @@ void bubbleSort(int arr[], int n)
         }
 
         if (!isSwapped)
+        {
             break;
+        }
     }
 }
 
@@ -42,3 +44,17 @@ int main()
     cout << endl;
     return 0;
 }
+
+/*
+Start with an integer array arr and its size n.
+Declare a boolean variable isSwapped.
+For i from n down to 1:
+    Set isSwapped to false.
+    For j from 0 to i - 2:
+        If arr[j] > arr[j + 1]:
+            Swap arr[j] and arr[j + 1].
+            Set isSwapped to true.
+If isSwapped is false, break out of the loop as the array is sorted.
+Continue until the array is sorted.
+Print the sorted array.
+*/
