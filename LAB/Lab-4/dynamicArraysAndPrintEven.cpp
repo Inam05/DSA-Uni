@@ -11,6 +11,7 @@ int main()
     int *array = new int[size];
 
     cout << "Enter " << size << " values for the array:" << endl;
+
     for (int i = 0; i < size; ++i)
     {
         cin >> array[i];
