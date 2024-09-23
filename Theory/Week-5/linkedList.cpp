@@ -7,9 +7,9 @@ public:
     int data;
     Node *next;
 
-    Node(int val)
+    Node(int data)
     {
-        data = val;
+        data = data;
         next = nullptr;
     }
 };
@@ -26,9 +26,9 @@ public:
         tail = nullptr;
     }
 
-    void insert(int val)
+    void insert(int data)
     {
-        Node *newNode = new Node(val);
+        Node *newNode = new Node(data);
         if (!head)
         {
             head = newNode;
