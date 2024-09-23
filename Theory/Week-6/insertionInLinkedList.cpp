@@ -80,24 +80,37 @@ int main()
 {
     LinkedList list;
     int choice, value, pos;
-    cout << "Where do you want to add the new node?\n1. Beginning\n2. End\n3. Specific position\n";
-    cin >> choice;
-    cout << "Enter value: ";
-    cin >> value;
-    if (choice == 1)
+
+    while (true)
     {
-        list.addAtBeginning(value);
+        cout << "Where do you want to add the new node?\n1. Beginning\n2. End\n3. Specific position\n0. Quit\n";
+        cin >> choice;
+
+        if (choice == 0)
+        {
+            break;
+        }
+
+        cout << "Enter value: ";
+        cin >> value;
+
+        if (choice == 1)
+        {
+            list.addAtBeginning(value);
+        }
+        else if (choice == 2)
+        {
+            list.addAtEnd(value);
+        }
+        else if (choice == 3)
+        {
+            cout << "Enter position: ";
+            cin >> pos;
+            list.addAtPosition(value, pos);
+        }
+
+        list.display();
     }
-    else if (choice == 2)
-    {
-        list.addAtEnd(value);
-    }
-    else if (choice == 3)
-    {
-        cout << "Enter position: ";
-        cin >> pos;
-        list.addAtPosition(value, pos);
-    }
-    list.display();
+
     return 0;
 }
