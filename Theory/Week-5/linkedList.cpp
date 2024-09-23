@@ -41,11 +41,11 @@ public:
 
     void display()
     {
-        Node *temp = head;
-        while (temp != nullptr)
+        Node *tail = head;
+        while (tail != nullptr)
         {
-            cout << temp->data << " ";
-            temp = temp->next;
+            cout << tail->data << " ";
+            tail = tail->next;
         }
         cout << endl;
     }
