@@ -1,10 +1,17 @@
 #include <iostream>
 using namespace std;
 
-struct Node
+class Node
 {
+public:
     int data;
     Node *next;
+
+    Node(int value)
+    {
+        data = value;
+        next = nullptr;
+    }
 };
 
 class LinkedList
@@ -18,17 +25,14 @@ public:
 
     void addAtBeginning(int value)
     {
-        Node *newNode = new Node();
-        newNode->data = value;
+        Node *newNode = new Node(value);
         newNode->next = head;
         head = newNode;
     }
 
     void addAtEnd(int value)
     {
-        Node *newNode = new Node();
-        newNode->data = value;
-        newNode->next = nullptr;
+        Node *newNode = new Node(value);
         if (head == nullptr)
         {
             head = newNode;
@@ -51,8 +55,7 @@ public:
             addAtBeginning(value);
             return;
         }
-        Node *newNode = new Node();
-        newNode->data = value;
+        Node *newNode = new Node(value);
         Node *temp = head;
         for (int i = 1; i < pos - 1 && temp != nullptr; i++)
         {
@@ -108,9 +111,10 @@ int main()
             cin >> pos;
             list.addAtPosition(value, pos);
         }
-
-        list.display();
     }
+
+    cout << "Final Linked List: ";
+    list.display();
 
     return 0;
 }
