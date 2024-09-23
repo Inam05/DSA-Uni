@@ -62,7 +62,9 @@ public:
             temp = temp->next;
         }
         if (temp == nullptr)
+        {
             return;
+        }
         newNode->next = temp->next;
         temp->next = newNode;
     }
