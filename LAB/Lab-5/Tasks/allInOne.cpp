@@ -144,7 +144,7 @@ public:
     bool searchValue(int value)
     {
         Node *temp = head;
-        int position = 1; 
+        int position = 1;
         while (temp != nullptr)
         {
             if (temp->data == value)
@@ -153,7 +153,7 @@ public:
                 return true;
             }
             temp = temp->next;
-            position++; 
+            position++;
         }
 
         cout << "Value " << value << " not found in the list." << endl;
@@ -171,6 +171,26 @@ public:
         }
         return count;
     }
+
+    int FindMiddleNode()
+    {
+        if (head == nullptr)
+        {
+            cout << "List is empty." << endl;
+            return -1;
+        }
+
+        Node *slow = head;
+        Node *fast = head;
+
+        while (fast != nullptr && fast->next != nullptr)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        return slow->data;
+    }
 };
 
 int main()
@@ -185,6 +205,7 @@ int main()
         cout << "2. Delete\n";
         cout << "3. Search for a value\n";
         cout << "4. Find total number of nodes\n";
+        cout << "5. Find the middle node\n";
         cout << "0. Quit\n";
         cin >> action;
 
@@ -252,6 +273,10 @@ int main()
         else if (action == 4)
         {
             cout << "Total number of nodes: " << list.findTotalNodes() << endl;
+        }
+        else if (action == 5)
+        {
+            cout << "Middle node value: " << list.FindMiddleNode() << endl;
         }
     }
 
