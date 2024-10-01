@@ -36,6 +36,10 @@ public:
             newNode->next = head;
             head->prev = newNode;
         }
+        else
+        {
+            tail = newNode; // When the list is empty, set the new node as tail
+        }
         head = newNode;
     }
 
@@ -94,6 +98,10 @@ public:
         {
             head->prev = nullptr;
         }
+        else
+        {
+            tail = nullptr; // If the list becomes empty, update tail to nullptr
+        }
         delete temp;
     }
 
@@ -145,6 +153,10 @@ public:
         {
             nodeToDelete->next->prev = temp;
         }
+        else
+        {
+            tail = temp; // If deleting the last node, update the tail
+        }
         delete nodeToDelete;
     }
 
@@ -161,13 +173,7 @@ public:
 
     void displayReverse()
     {
-        if (head == nullptr)
-            return;
-        Node *temp = head;
-        while (temp->next != nullptr)
-        {
-            temp = temp->next;
-        }
+        Node *temp = tail;
         while (temp != nullptr)
         {
             cout << temp->data << " ";
