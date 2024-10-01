@@ -20,12 +20,12 @@ class LinkedList
 {
 public:
     Node *head;
-    Node *tail; // New tail pointer
+    Node *tail;
 
     LinkedList()
     {
         head = nullptr;
-        tail = nullptr; // Initialize tail
+        tail = nullptr;
     }
 
     void addAtBeginning(int value)
@@ -45,13 +45,13 @@ public:
         if (head == nullptr)
         {
             head = newNode;
-            tail = newNode; // Both head and tail point to the new node
+            tail = newNode;
         }
         else
         {
-            tail->next = newNode; // Link the current tail to the new node
-            newNode->prev = tail; // Link new node's previous to the current tail
-            tail = newNode;       // Update the tail to the new node
+            tail->next = newNode;
+            newNode->prev = tail;
+            tail = newNode;
         }
     }
 
@@ -104,19 +104,17 @@ public:
             cout << "List is empty, nothing to delete." << endl;
             return;
         }
-
-        if (head == tail) // Only one node in the list
+        if (head == tail)
         {
             delete head;
             head = nullptr;
             tail = nullptr;
             return;
         }
-
-        Node *temp = tail;    // Start from the tail
-        tail = tail->prev;    // Move the tail pointer back
-        tail->next = nullptr; // Set the new tail's next to null
-        delete temp;          // Delete the old tail node
+        Node *temp = tail;
+        tail = tail->prev;
+        tail->next = nullptr;
+        delete temp;
     }
 
     void deleteAtPosition(int pos)
