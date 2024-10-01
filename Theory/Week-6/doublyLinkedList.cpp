@@ -6,13 +6,13 @@ class Node
 public:
     int data;
     Node *next;
-    Node *prev; // Pointer to the previous node
+    Node *prev;
 
     Node(int value)
     {
         data = value;
         next = nullptr;
-        prev = nullptr; // Initialize prev to nullptr
+        prev = nullptr;
     }
 };
 
@@ -31,7 +31,7 @@ public:
         if (head != nullptr)
         {
             newNode->next = head;
-            head->prev = newNode; // Set previous of head to newNode
+            head->prev = newNode;
         }
         head = newNode;
     }
@@ -51,7 +51,7 @@ public:
                 temp = temp->next;
             }
             temp->next = newNode;
-            newNode->prev = temp; // Set previous of newNode to temp
+            newNode->prev = temp;
         }
     }
 
@@ -75,10 +75,10 @@ public:
         newNode->next = temp->next;
         if (temp->next != nullptr)
         {
-            temp->next->prev = newNode; // Set previous of the next node to newNode
+            temp->next->prev = newNode;
         }
         temp->next = newNode;
-        newNode->prev = temp; // Set previous of newNode to temp
+        newNode->prev = temp;
     }
 
     void deleteAtBeginning()
@@ -92,7 +92,7 @@ public:
         head = head->next;
         if (head != nullptr)
         {
-            head->prev = nullptr; // Set previous of new head to nullptr
+            head->prev = nullptr;
         }
         delete temp;
     }
@@ -115,7 +115,7 @@ public:
         {
             temp = temp->next;
         }
-        temp->prev->next = nullptr; // Remove reference to last node
+        temp->prev->next = nullptr;
         delete temp;
     }
 
@@ -145,7 +145,7 @@ public:
         temp->next = nodeToDelete->next;
         if (nodeToDelete->next != nullptr)
         {
-            nodeToDelete->next->prev = temp; // Set the next node's previous pointer
+            nodeToDelete->next->prev = temp;
         }
         delete nodeToDelete;
     }
@@ -157,6 +157,23 @@ public:
         {
             cout << temp->data << " ";
             temp = temp->next;
+        }
+        cout << endl;
+    }
+
+    void displayReverse()
+    {
+        if (head == nullptr)
+            return;
+        Node *temp = head;
+        while (temp->next != nullptr)
+        {
+            temp = temp->next;
+        }
+        while (temp != nullptr)
+        {
+            cout << temp->data << " ";
+            temp = temp->prev;
         }
         cout << endl;
     }
@@ -175,7 +192,6 @@ public:
             temp = temp->next;
             position++;
         }
-
         cout << "Value " << value << " not found in the list." << endl;
         return false;
     }
@@ -192,23 +208,20 @@ public:
         return count;
     }
 
-    int FindMiddleNode()
+    int findMiddleNode()
     {
         if (head == nullptr)
         {
             cout << "List is empty." << endl;
             return -1;
         }
-
         Node *slow = head;
         Node *fast = head;
-
         while (fast != nullptr && fast->next != nullptr)
         {
             slow = slow->next;
             fast = fast->next->next;
         }
-
         return slow->data;
     }
 };
@@ -226,6 +239,7 @@ int main()
         cout << "3. Search for a value\n";
         cout << "4. Find total number of nodes\n";
         cout << "5. Find the middle node\n";
+        cout << "6. Display list in reverse\n";
         cout << "0. Quit\n";
         cin >> action;
 
@@ -238,10 +252,8 @@ int main()
         {
             cout << "Where do you want to add the new node?\n1. Beginning\n2. End\n3. Specific position\n";
             cin >> choice;
-
             cout << "Enter value: ";
             cin >> value;
-
             if (choice == 1)
             {
                 list.addAtBeginning(value);
@@ -261,7 +273,6 @@ int main()
         {
             cout << "Where do you want to delete the node from?\n1. Beginning\n2. End\n3. Specific position\n";
             cin >> choice;
-
             if (choice == 1)
             {
                 list.deleteAtBeginning();
@@ -281,14 +292,7 @@ int main()
         {
             cout << "Enter the value to search: ";
             cin >> value;
-            if (list.searchValue(value))
-            {
-                cout << "Value found in the list." << endl;
-            }
-            else
-            {
-                cout << "Value not found." << endl;
-            }
+            list.searchValue(value);
         }
         else if (action == 4)
         {
@@ -296,7 +300,12 @@ int main()
         }
         else if (action == 5)
         {
-            cout << "Middle node value: " << list.FindMiddleNode() << endl;
+            cout << "Middle node value: " << list.findMiddleNode() << endl;
+        }
+        else if (action == 6)
+        {
+            cout << "Reversed List: ";
+            list.displayReverse();
         }
     }
 
