@@ -73,48 +73,38 @@ public:
     }
 };
 
-class StackManager : public StackOperations
-{
-public:
-    StackManager(int size) : StackOperations(size) {}
-
-    void manageStack()
-    {
-        int choice, value;
-        do
-        {
-            cout << "1. Push\n2. Pop\n3. Display\n4. Exit\nEnter your choice: ";
-            cin >> choice;
-            switch (choice)
-            {
-            case 1:
-                cout << "Enter value to push: ";
-                cin >> value;
-                push(value);
-                break;
-            case 2:
-                pop();
-                break;
-            case 3:
-                display();
-                break;
-            case 4:
-                cout << "Exiting..." << endl;
-                break;
-            default:
-                cout << "Invalid choice." << endl;
-            }
-        } while (choice != 4);
-    }
-};
-
 int main()
 {
-    int size;
+    int size, choice, value;
     cout << "Enter the size of the stack: ";
     cin >> size;
 
-    StackManager stack(size);
-    stack.manageStack();
+    StackOperations stack(size);
+
+    do
+    {
+        cout << "1. Push\n2. Pop\n3. Display\n4. Exit\nEnter your choice: ";
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            cout << "Enter value to push: ";
+            cin >> value;
+            stack.push(value);
+            break;
+        case 2:
+            stack.pop();
+            break;
+        case 3:
+            stack.display();
+            break;
+        case 4:
+            cout << "Exiting..." << endl;
+            break;
+        default:
+            cout << "Invalid choice." << endl;
+        }
+    } while (choice != 4);
+
     return 0;
 }
