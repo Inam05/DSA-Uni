@@ -23,13 +23,9 @@ public:
         if (node == nullptr)
             return new Node(data);
         if (data <= node->data)
-        {
             node->left = insertNode(node->left, data);
-        }
         else
-        {
             node->right = insertNode(node->right, data);
-        }
         return node;
     }
 
@@ -87,22 +83,18 @@ int main()
 {
     BinaryTree tree;
     int data;
-    char cont;
-    do
+
+    while (true)
     {
-        cout << "Enter a number: ";
+        cout << "Enter a number (-1 to stop): ";
         cin >> data;
+        if (data == -1)
+            break;
         if (tree.root == nullptr)
-        {
             tree.root = new Node(data);
-        }
         else
-        {
             tree.insertNode(tree.root, data);
-        }
-        cout << "Do you want to add another node? (y/n): ";
-        cin >> cont;
-    } while (cont == 'y' || cont == 'Y');
+    }
 
     int printChoice;
     cout << "\nChoose the traversal order for display:\n";
