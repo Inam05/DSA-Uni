@@ -59,7 +59,10 @@ public:
         {
             return searchRec(node->left, value);
         }
-        return searchRec(node->right, value);
+        else
+        {
+            return searchRec(node->right, value);
+        }
     }
 
     void inorderTraversal(Node *node)
