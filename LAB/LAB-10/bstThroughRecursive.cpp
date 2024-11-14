@@ -18,11 +18,6 @@ public:
 
     BinaryTree() : root(nullptr) {}
 
-    void insert(int value)
-    {
-        root = insertRec(root, value);
-    }
-
     Node *insertRec(Node *node, int value)
     {
         if (node == nullptr)
@@ -38,11 +33,6 @@ public:
             node->right = insertRec(node->right, value);
         }
         return node;
-    }
-
-    bool search(int value)
-    {
-        return searchRec(root, value);
     }
 
     bool searchRec(Node *node, int value)
@@ -88,12 +78,12 @@ int main()
         cin >> value;
         if (value == -1)
             break;
-        tree.insert(value);
+        tree.root = tree.insertRec(tree.root, value); // Directly using insertRec to insert nodes
     }
 
     cout << "\nEnter a number to search: ";
     cin >> value;
-    if (tree.search(value))
+    if (tree.searchRec(tree.root, value)) // Searching directly using searchRec
     {
         cout << "Value " << value << " found in the tree." << endl;
     }
